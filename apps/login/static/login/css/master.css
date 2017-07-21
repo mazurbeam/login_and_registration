@@ -1,0 +1,12 @@
+form {
+  border: 1px solid black;
+  width: 50%;
+}
+
+.messages {
+  color: red;
+}
+
+form > input {
+  display: block;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login & Registration</title>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'login/css/master.css'%}">
+  </head>
+  <body>
+    <main>
+      <h3>Registration</h3>
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+            {% if message.tags == 'error'%}
+              <li>{{ message }}</li>
+            {% endif %}
+            {% if message.tags == 'success'%}
+              <li>{{ message }}</li>
+            {% endif %}
+          {% endfor %}
+      </ul>
+      {% endif %}
+      <p>
+        <form action="/register" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="register">
+          <label for="first_name">First Name:</label>
+          <input type="text" name="first_name">
+          <label for="last_name">Last Name</label>
+          <input type="text" name="last_name">
+          <label for="email">Email:</label>
+          <input type="text" name="email">
+          <label for="password">Password</label>
+          <input type="text" name="password">
+          <label for="confirm_password">Confirm pw</label>
+          <input type="text" name="confirm_password">
+          <input type="submit" value="Register">
+        </form>
+      </p>
+      <h3>Login</h3>
+      <p>
+        <form action="/login" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="register">
+          <label for="email">Email:</label>
+          <input type="text" name="email">
+          <label for="password">Password</label>
+          <input type="text" name="password">
+          <input type="submit" value="Login">
+        </form>
+      </p>
+
+    </main>
+  </body>
+</html>
